@@ -51,7 +51,7 @@ Promise.resolve().then(() => {
         targets: targets,
         chaincodeId: options.chaincode_id,
         fcn: 'write',
-        args: ['0', '100'],
+        args: [process.argv[2], process.argv[3]],
         chainId: options.channel_id,
         txId: tx_id
     };
