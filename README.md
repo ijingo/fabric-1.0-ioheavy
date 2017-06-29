@@ -39,6 +39,8 @@ into `/etc/hosts`
 
 3. Edit the path prefix of the line `export CORE_PEER_MSPCONFIGPATH=/data/wangji/gowork/src/github.com/hyperledger/fabric/build/bin/network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp` in `run-peer.sh` accordingly, and change the line `export CORE_PEER_FILESYSTEMPATH=/data/wangji/tmp/hyperledger/production` to make it point to the desired folder to hold the ledger data.
 
+Use `export CORE_LEDGER_STATE_STATEDATABASE=goleveldb` in the `run-peer.sh` to enable goleveldb as the storage.
+
 Also, edit the path prefix of the line `export ORDERER_GENERAL_GENESISFILE=/data/wangji/gowork/src/github.com/hyperledger/fabric/build/bin/network/genesis.block` and `export ORDERER_GENERAL_LOCALMSPDIR=/data/wangji/gowork/src/github.com/hyperledger/fabric/build/bin/network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp` in `run-orderer.sh` accordingly, also make `export ORDERER_FILELEDGER_LOCATION=/data/wangji/tmp/hyperledger/production/orderer` point to the storage location.
 
 This step is to set the `peer` and `orderer` using the private keys in the `network/crypto-config` folder, and also set the data storage path of the ledger data when using `goleveldb` as the storage.
@@ -71,8 +73,9 @@ automatically install ustore under `$GOPATH/src/ustore`
 
 3. Copy a ustore `conf` folder into the fabric binary folder (or which the path the binary is run in).
 
-4. Do the same Step 2-4 in the last section.
+4. Use `export CORE_LEDGER_STATE_STATEDATABASE=UStore` (`UStore` case sensitive) in the `run-peer.sh` to enable UStore as the storage (which is exact the same with the code in this repository but not default by Hyperledger Fabric).
 
+5. Do the same Step 2-4 in the last section.
 
 ## Test Environment
 
